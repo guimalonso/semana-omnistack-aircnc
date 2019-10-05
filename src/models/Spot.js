@@ -18,8 +18,12 @@ const SpotSchema = new mongoose.Schema(
   }
 );
 
-SpotSchema.virtual("thumbnail_url").get(function() {
+SpotSchema.virtual("thumbnail_url_web").get(function() {
   return `http://localhost:3333/files/${this.thumbnail}`;
+});
+
+SpotSchema.virtual("thumbnail_url_mobile").get(function() {
+  return `http://192.168.0.16:3333/files/${this.thumbnail}`;
 });
 
 module.exports = mongoose.model("Spot", SpotSchema);
